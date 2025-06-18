@@ -5,20 +5,21 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-  steps:
-    - uses: actions/checkout@v3
-    - name: Configurar Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'
+    steps:
+      - uses: actions/checkout@v3
 
-  - name: Instalar dependencias
-    run: |
-      python -m venv venv
-      source venv/bin/activate
-      pip install -r requerimientos.txt
+      - name: Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
 
-  - name: Ejecutar pruebas
-    run: |
-      source venv/bin/activate
-      pytest
+      - name: Instalar dependencias
+        run: |
+          python -m venv .venv
+          source .venv/bin/activate
+          pip install -r requerimientos.txt
+
+      - name: Ejecutar pruebas
+        run: |
+          source venv/bin/activate
+          pytest
